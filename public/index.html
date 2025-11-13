@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gift Garden</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Gift Garden</h1>
+      <p class="tagline">Celebrate every milestone with thoughtful surprises.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel" id="profile-panel">
+        <div class="panel-header">
+          <h2>Family &amp; Friends</h2>
+          <button class="primary" id="add-profile-btn">Add Profile</button>
+        </div>
+        <ul id="profile-list" class="profile-list"></ul>
+      </section>
+
+      <section class="panel" id="details-panel">
+        <div class="panel-header">
+          <h2 id="selected-profile-name">Select someone to begin</h2>
+          <div class="profile-actions">
+            <button class="secondary" id="edit-profile-btn" disabled>Edit</button>
+            <button class="secondary" id="delete-profile-btn" disabled>Delete</button>
+          </div>
+        </div>
+
+        <div id="profile-details" class="profile-details empty-state">
+          <p>Add a profile to start tracking celebrations and gifts.</p>
+        </div>
+
+        <section id="events-section" class="events-section hidden">
+          <header class="section-header">
+            <h3>Special Days</h3>
+            <button class="primary" id="add-event-btn">Add Special Day</button>
+          </header>
+          <ul id="event-list" class="event-list"></ul>
+        </section>
+
+        <section id="gift-section" class="gift-section hidden">
+          <header class="section-header">
+            <h3>Gift Suggestions</h3>
+            <button class="primary" id="gift-suggestions-btn">Find Gifts</button>
+          </header>
+          <div id="gift-results" class="gift-results"></div>
+        </section>
+
+        <section id="notification-section" class="notification-section hidden">
+          <header class="section-header">
+            <h3>Reminders</h3>
+          </header>
+          <ul id="notification-list" class="notification-list"></ul>
+        </section>
+      </section>
+
+      <section class="panel" id="calendar-panel">
+        <div class="panel-header">
+          <h2>Celebration Calendar</h2>
+          <div class="calendar-controls">
+            <button class="secondary" id="prev-month">◀</button>
+            <span id="calendar-month"></span>
+            <button class="secondary" id="next-month">▶</button>
+          </div>
+        </div>
+        <div id="calendar"></div>
+      </section>
+    </main>
+
+    <dialog id="profile-dialog" class="modal">
+      <form method="dialog" id="profile-form" class="modal-content">
+        <h3 id="profile-form-title">Add Profile</h3>
+        <label>
+          Full name
+          <input type="text" id="profile-name" required />
+        </label>
+        <label>
+          Relationship
+          <input type="text" id="profile-relationship" placeholder="e.g. Sister" />
+        </label>
+        <label>
+          Likes
+          <textarea id="profile-likes" placeholder="Comma separated"></textarea>
+        </label>
+        <label>
+          Dislikes
+          <textarea id="profile-dislikes" placeholder="Comma separated"></textarea>
+        </label>
+        <label>
+          Hobbies
+          <textarea id="profile-hobbies" placeholder="Comma separated"></textarea>
+        </label>
+        <menu class="modal-actions">
+          <button value="cancel" class="secondary">Cancel</button>
+          <button id="save-profile" value="default" class="primary">Save</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="event-dialog" class="modal">
+      <form method="dialog" id="event-form" class="modal-content">
+        <h3 id="event-form-title">Add Special Day</h3>
+        <label>
+          Celebration name
+          <input type="text" id="event-name" placeholder="Birthday" required />
+        </label>
+        <label>
+          Date
+          <input type="date" id="event-date" required />
+        </label>
+        <label>
+          Reminder preference
+          <select id="event-reminder">
+            <option value="0">On the day</option>
+            <option value="1">1 day before</option>
+            <option value="3">3 days before</option>
+            <option value="7">1 week before</option>
+            <option value="14">2 weeks before</option>
+            <option value="30">1 month before</option>
+          </select>
+        </label>
+        <label>
+          Notes
+          <textarea id="event-notes" placeholder="Favorite cake flavor, party ideas..."></textarea>
+        </label>
+        <menu class="modal-actions">
+          <button value="cancel" class="secondary">Cancel</button>
+          <button id="save-event" value="default" class="primary">Save</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <template id="gift-card-template">
+      <article class="gift-card">
+        <div class="gift-card-body">
+          <h4 class="gift-title"></h4>
+          <p class="gift-description"></p>
+          <p class="gift-price"></p>
+        </div>
+        <footer>
+          <a class="gift-link" href="#" target="_blank" rel="noopener">View gift</a>
+        </footer>
+      </article>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
