@@ -1,0 +1,15 @@
+{
+  "name": "giftapp",
+  "version": "1.0.0",
+  "description": "Gift Garden — celebrate the people you love with reminders and gift inspiration.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No automated tests available\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
